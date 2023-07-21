@@ -1,0 +1,135 @@
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+	<head>
+		<!-- Заголовок страницы в браузере -->
+		<title>Тренер 4 страница</title>
+        <!---Подключаем css-->
+		<link rel="stylesheet" href="css/trener-1.style.css">
+
+        <link rel="stylesheet" href="css/animate.css"> <!-- подключили для анимации с сайта https://wowjs.uk/docs.html -->
+
+		<!-- Кодировка страницы -->
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+    <!-- Отображаемое тело страницы -->
+    <body>
+        <!-- Оболочка для демонстрации -->
+        <div class="wrapper"> <!-- wrapper -->
+            <!-- Контент -->
+            <header class="header">                                                          <!-- -------header------------- -->
+                <div class="conteiner _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+                    <div class="header__body"> <!-- Флекс-контейнер оболочка для logo-->
+                        <div class="header_logo"> <!-- --------header_logo------------ -->
+                            <a href="index.html"><span class="span-FIT">FIT</span>PEOPLE</a>
+                        </div>    <!-- --------header_logo------------ -->
+
+                            <div class="header__burger"> <!-- это будет бургер меню ГОРИЗОНТАЛЬНЫЕ ПОЛОСКИ -->
+                                <span></span> <!-- здесь будем рисовать СРЕДНЮЮ ПОЛОСКУ МЕНЮ -->
+                            </div>
+
+                                <nav class="header__menu">  <!-- создаем наше меню-ссылки -->   <!-- ------------menu_header-------------- -->
+                                     <ul class="header__list"> <!-- оболочка для пунктов меню -->
+                                        <li class="menu_header_link"><a href="index.html" class="menu_header_link1">Home</a></li>
+                                        <li class="menu_header_link"><a href="team.html" class="menu_header_link1 link_vip">Team</a></li>
+                                        <li class="menu_header_link"><a href="portfolio.html" class="menu_header_link1">Portfolio</a></li>
+                                        <li class="menu_header_link"><a href="servises.html" class="menu_header_link1">Servises</a></li>
+                                        <li class="menu_header_link"><a href="contacts.html" class="menu_header_link1">Contacts</a></li>
+                                     </ul>
+                                </nav>                                            <!-- ------------menu_header-------------- -->
+                    </div>  
+                </div>                                                         <!-- -------conteiner------------- -->
+            </header>                                                             <!-- -------header------------- -->
+
+<!-- ------------------------------------------------header---------------------------------------------------------------------------- -->
+
+
+<!-- ------------------------------------------------section_TRENER-1---------------------------------------------------------------------------- -->
+
+<section class="section_TRENER-1">
+    <div class="conteiner_section_TRENER-1 _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+
+        <div class="body-section_TRENER-1  wow fadeInLeft" data-wow-duration="6s"> <!-- ---------------------------делаем ЭФФЕКТ АНИМАЦИИ ------------------------------------- -->
+            <div class="title_1_1  wow slideInLeft">
+                <h3>William Adats</h3>
+            </div>	
+
+            <div class="subtitle_1_1  wow slideInLeft" data-wow-duration="2s"> <!-- ВСЕ БУДЕТ В 1 СТРОКУ -->     <!-- анимация -->
+                   <a href="index.html">HOME |</a> <!--  ----------делаем переход слоВа -HOME- на ГЛАВНУЮ СТРАНИЦУ---------  -->
+                   <a href="team.html">TEAM |</a> <!--  ----------делаем переход слоВа -TEAM- на СТРАНИЦУ -TEAM- --------  -->
+                   <a href="team.html"><span class="Kayleigh_Roberts">William Adats |</span></a> <!--  ------------------------это текущая страница------------------------  -->
+            </div>		          <!-- ВСЕ БУДЕТ В 1 СТРОКУ -->
+        </div>
+
+    </div>
+</section>
+
+<!-- ------------------------------------------------section_TRENER---------------------------------------------------------------------------- -->
+
+<section class="section_TRENER-1">
+    <div class="conteiner_section_TRENER-1 _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+
+        <div class="COLUMS_section_TRENER-1">
+
+            <div class="COLUMN-left_section_TRENER-1 _ibg4  wow slideInLeft" data-wow-duration="4s">
+                <img src="img_TEAM/4.png " alt="">
+            </div>
+
+
+      <div class="COLUMN-right_section_TRENER-1 wow slideInRight" data-wow-duration="4s">
+                <div class="TITLE_section_TRENER-1">
+                    <h3>William Adats</h3> 
+                </div>
+
+
+                <div class="SUBTITLE_section_TRENER-1">
+                    <h4>FITNESS COACH</h4>
+                </div>
+
+                <div class="TEXT_section_TRENER-1">
+                    <h5>William Adats is an award-winning fitness coach, Miss Olympia 2013, Miss Olympia 2016, Fitness Bikini 2017 and Best Coach according to NY Fitness Association. She is keen on sports and has very professional approach to training people. She puts emphasis on hard training with heavy weights at the same time paying much attention to cardio and stretching.</h5>
+                </div>
+
+                <div class="ICONS_section_TRENER-1">
+                    <a href=""><img src="section-icons/инстаграм_мал.png" alt=""></a>
+                    <a href=""><img src="section-icons/фейсбук_мал.png" alt=""></a>
+                    <a href=""><img src="section-icons/ютуб_мал.png" alt=""></a>
+                    <a href=""><img src="section-icons/телеграм_мал.png" alt=""></a>
+
+                </div>
+
+
+       </div>
+
+                </div>
+    </div>
+</section>
+
+
+<!-- ------------------------------------------------section_TRENER---------------------------------------------------------------------------- -->
+
+
+
+
+                  <!-- Подключаем jQuery -->
+                  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+                  <!-- Подключаем слайдер Slick -->
+                  <script src="js/slick.min.js"></script> <!-- это находится  в папке js -->
+                  <!-- Подключаем файл скриптов -->
+                  <script src="js/script.js"></script>
+
+                  <script src="js/wow.min.js"></script> <!-- ------------подключили для анимации с сайта https://wowjs.uk/docs.html----------------- -->
+                  <script>                 
+                  new WOW().init(); 
+                 </script>               <!-- ---------подключили для анимации с сайта https://wowjs.uk/docs.html----------------------------------- -->
+
+           <script type="text/javascript"></script> <!-- -----Защита текста на сайте от копирования!!!------- -->
+
+</div> <!-- -------wrapper------------- -->
+
+</body>	
+</html>

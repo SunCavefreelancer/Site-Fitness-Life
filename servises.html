@@ -1,0 +1,211 @@
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+	<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+	<head>
+		<!-- Заголовок страницы в браузере -->
+		<title>страница Servises</title>
+        <!---Подключаем css-->
+		<link rel="stylesheet" href="css/servises.style.css">
+
+        <link rel="stylesheet" href="css/animate.css"> <!-- подключили для анимации с сайта https://wowjs.uk/docs.html -->
+
+		<!-- Кодировка страницы -->
+		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+    <!-- Отображаемое тело страницы -->
+    <body>
+        <!-- Оболочка для демонстрации -->
+        <div class="wrapper"> <!-- wrapper -->
+            <!-- Контент -->
+            <header class="header">                                                          <!-- -------header------------- -->
+                <div class="conteiner _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+                    <div class="header__body"> <!-- Флекс-контейнер оболочка для logo-->
+                        <div class="header_logo"> <!-- --------header_logo------------ -->
+                            <a href="index.html"><span class="span-FIT">FIT</span>PEOPLE</a>
+                        </div>    <!-- --------header_logo------------ -->
+
+                            <div class="header__burger"> <!-- это будет бургер меню ГОРИЗОНТАЛЬНЫЕ ПОЛОСКИ -->
+                                <span></span> <!-- здесь будем рисовать СРЕДНЮЮ ПОЛОСКУ МЕНЮ -->
+                            </div>
+
+                                <nav class="header__menu">  <!-- создаем наше меню-ссылки -->   <!-- ------------menu_header-------------- -->
+                                     <ul class="header__list"> <!-- оболочка для пунктов меню -->
+                                        <li class="menu_header_link"><a href="index.html" class="menu_header_link1">Home</a></li>
+                                        <li class="menu_header_link"><a href="team.html" class="menu_header_link1">Team</a></li>
+                                        <li class="menu_header_link"><a href="portfolio.html" class="menu_header_link1">Portfolio</a></li>
+                                        <li class="menu_header_link"><a href="servises.html" class="menu_header_link1 link_vip">Servises</a></li>
+                                        <li class="menu_header_link"><a href="contacts.html" class="menu_header_link1">Contacts</a></li>
+                                     </ul>
+                                </nav>                                            <!-- ------------menu_header-------------- -->
+                    </div>  
+                </div>                                                         <!-- -------conteiner------------- -->
+            </header>                                                             <!-- -------header------------- -->
+
+<!-- ------------------------------------------------header---------------------------------------------------------------------------- -->
+
+
+<!-- ------------------------------------------------section_Servises------UP---------------------------------------------------------------------- -->
+
+<section class="section_Servises">
+    <div class="conteiner_section_Servises _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+
+        <div class="body-section_Servises  wow fadeInLeft" data-wow-duration="6s"> <!-- ---------------------------делаем ЭФФЕКТ АНИМАЦИИ ------------------------------------- -->
+            <div class="title_Servises  wow slideInLeft">
+                <h3>Services</h3>
+            </div>	
+
+            <div class="subtitle_Servises  wow slideInLeft" data-wow-duration="2s"> <!-- ВСЕ БУДЕТ В 1 СТРОКУ -->     <!-- анимация -->
+                    <a href="index.html"><p><span class="span_home_s_s">Home</a> | </span> <!--  ----------делаем переход слоа -HOME- на ГЛАВНУЮ СТРАНИЦУ- --------  -->
+                    <a href="servises.html"><span class="span_pricing_s_s">Pricing</a> | </span>  <!--  ----------делаем переход слова на -servises.html- ---------  -->
+                    <a href="pricing.index.html"><span class="span_club_card_s_s">Club Card</a> | </span></p> <!-- создали новую страницу и делаем переход слова на -pricing.html- -->
+            </div>		
+                               <!-- ВСЕ БУДЕТ В 1 СТРОКУ -->
+        </div>
+
+    </div>
+</section>
+
+<!-- ------------------------------------------------section_Servises-----UP---------------------------------------------------------------------- -->
+
+
+<!-- ------------------------------------------------section_Servises--CARDS-------------------------------------------------------------------------- -->
+<section class="section_Servises-CARDS">
+    <div class="conteiner_Servises-CARDS _conteiner"> <!-- который ограничит ШИРИНУ КОНТЕНТНОЙ ЧАСТИ -->   <!-- -------conteiner------------- -->
+
+        <div class="COLUMS_section_Servises">
+
+            <div class="COLUM_section_Servises"> <!-- колонка 1 -->
+                <div class="IMG_section_Servises wow rollIn" data-wow-duration="1s"> <!-- foto -->
+                    <img src="section-cards/pro3x.png" alt="">
+                </div>
+
+                <div class="CARD_section_Servises_content">
+                        <div class="TITLE_section_Servises">
+                            <h3>CROSSFIT</h3>
+                        </div>
+
+                        <div class="SUBTITLE_section_Servises">
+                            <h3>Crossfit is a universal way of saving your health and making your body strong.</h3>
+                        </div> 
+                        
+                                <div class="PRICE_section_Servises">
+                                    <h3>$45</h3>
+                                    <div class="PRICE_month"><h4>/per month</h4></div>
+                                </div>
+
+                                        <nav class="nav_section_Servises" >
+                                            <ul class="list_section_Servises" >
+                                                <li class="link_section_Servises">Personal training program</li>
+                                                <li class="link_section_Servises">Diet according to your needs</li>
+                                                <li class="link_section_Servises">Cardio and stretching</li>
+                                            </ul>
+                                        </nav>
+
+                                        <div class="button_2 wow rotateIn" data-wow-duration="3s" data-wow-delay="1.5s">
+                                            <a href="#">button</a>
+                                        </div>
+                </div>
+                
+            </div>
+
+
+            <div class="COLUM_section_Servises"> <!-- колонка 2 -->
+                <div class="IMG_section_Servises wow rollIn" data-wow-duration="2s"> <!-- foto -->
+                    <img src="section-cards/_02.jpg" alt="">
+                </div>
+
+                <div class="CARD_section_Servises_content">
+                        <div class="TITLE_section_Servises">
+                            <h3>FITNESS</h3>
+                        </div>
+
+                        <div class="SUBTITLE_section_Servises">
+                            <h3>Fitness is necessary for everybody to train your muscles and endurance.</h3>
+                        </div> 
+                        
+                                <div class="PRICE_section_Servises">
+                                    <h3>$55</h3>
+                                    <div class="PRICE_month"><h4>/per month</h4></div>
+                                </div>
+
+                                        <nav class="nav_section_Servises" >
+                                            <ul class="list_section_Servises" >
+                                                <li class="link_section_Servises">Personal training program</li>
+                                                <li class="link_section_Servises">Diet according to your needs</li>
+                                                <li class="link_section_Servises">Cardio and stretching</li>
+                                            </ul>
+                                        </nav>
+
+                                        <div class="button_2 wow rotateIn" data-wow-duration="3s" data-wow-delay="1.5s">
+                                            <a href="#">button</a>
+                                        </div>
+                </div>
+                
+            </div>
+
+
+            <div class="COLUM_section_Servises"> <!-- колонка 2 -->
+                <div class="IMG_section_Servises wow rollIn" data-wow-duration="3s"> <!-- foto -->
+                    <img src="section-cards/pro2x.png" alt="">
+                </div>
+
+                <div class="CARD_section_Servises_content">
+                        <div class="TITLE_section_Servises">
+                            <h3>AEROBIC</h3>
+                        </div>
+
+                        <div class="SUBTITLE_section_Servises">
+                            <h3>Aerobic is the perfect activity for women to stay fit and healthy.</h3>
+                        </div> 
+                        
+                                <div class="PRICE_section_Servises">
+                                    <h3>$60</h3>
+                                    <div class="PRICE_month"><h4>/per month</h4></div>
+                                </div>
+
+                                        <nav class="nav_section_Servises" >
+                                            <ul class="list_section_Servises" >
+                                                <li class="link_section_Servises">Personal training program</li>
+                                                <li class="link_section_Servises">Diet according to your needs</li>
+                                                <li class="link_section_Servises">Cardio and stretching</li>
+                                            </ul>
+                                        </nav>
+
+                                        <div class="button_2 wow rotateIn" data-wow-duration="3s" data-wow-delay="1.5s">
+                                            <a href="#">button</a>
+                                        </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+
+<!-- ------------------------------------------------section_Servises--CARDS-------------------------------------------------------------------------- -->
+
+
+                  <!-- Подключаем jQuery -->
+                  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+                  <!-- Подключаем слайдер Slick -->
+                  <script src="js/slick.min.js"></script> <!-- это находится  в папке js -->
+                  <!-- Подключаем файл скриптов -->
+                  <script src="js/script.js"></script>
+
+                  <script src="js/wow.min.js"></script> <!-- ------------подключили для анимации с сайта https://wowjs.uk/docs.html----------------- -->
+                  <script>                 
+                  new WOW().init(); 
+                 </script>               <!-- ---------подключили для анимации с сайта https://wowjs.uk/docs.html----------------------------------- -->
+
+           <script type="text/javascript"></script> <!-- -----Защита текста на сайте от копирования!!!------- -->
+
+</div> <!-- -------wrapper------------- -->
+
+</body>	
+</html>
