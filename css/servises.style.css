@@ -1,0 +1,527 @@
+/*Обнуление*/
+*,*:before,:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    text-decoration: none;
+    letter-spacing: none;
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* ------------------------------------------------------------------- */
+html,
+body {
+    height: 100%; /* прижимаем футер КНИЗУ */
+    font-family: 'Lato', sans-serif; /* не сработал шрифт */
+    line-height: 1;
+    font-size: 16px;
+    color: #000;
+}
+/* ------------------------------------------------------------------- */
+
+/* -------------------------оболочка для демонстрации----------------- */
+.wrapper {
+    min-height: 100%;/* прижимаем футер КНИЗУ */
+    display: flex; /* прижимаем футер КНИЗУ */
+    flex-direction: column; /* прижимаем футер КНИЗУ */
+    overflow: hidden;
+}
+/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+._conteiner { /* общий ограничиваюий контейнер */
+    max-width: 1046px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+._ibg { /* для всех используемых ibg */
+    position: relative;
+}
+._ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+
+/* -------------------------основные стили------------------------ */
+
+.header {
+    position: fixed; /* Наша ШАПКА - HEADER будет ФИКСИРОВАННОЙ, т.е.при скроле она всеглда будет сверху кнотента */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;/* делаем большой z-index ЧТОБЫ поверх контента была шапка*/
+}
+
+/* --------------------создаем ПЛАШКУ РОЗОВОГО ЦВЕТА----------------------*/
+.header:before {/* создаем ПЛАШКУ */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* т.е. на ВЕСЬ РАЗМЕР НАШЕЙ ШАПОЧКИ */
+    background-color: rgb(33, 231, 238);
+    z-index: 2;
+}
+._conteiner { /* теперь ОГРАНИЧИМ по ШИРИНЕ КОНТЕНТ */
+    max-width: 1150px; /* получилось */
+    margin: 0 auto; /* получилось */
+    padding: 0px 20px; /* получилось */
+}
+.header__body { /* теперь нам нужно ВЫТАЩИТЬ ВЕСЬ КОНТЕНТ НАВЕРХ из под ШАПКИ */
+    position: relative;
+    z-index: 2;
+    height: 80px; /* ВЫСОТА ШАПКИ header */
+
+    /* теперь продолжаем работать с ШАПКОЙ, после того как в conteiner - ОГРАНИЧИЛИ по ШИРИНЕ КОНТЕНТ */
+    display: flex; /* ЗаДАЛИ flex что бы РАЗБРОСАТЬ по СТОРОНАМ лого и пункты меню */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    /*flex: 0 0 80px; /* КАРТИНКА сама по размеру 200рх */
+    /*border-radius:60%; /* делаем картинку КРУГЛОЙ */
+    /*overflow: hidden;*/ 
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+
+}
+.header__logo img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+   /*max-width: 100%;*/
+    /*display: block;*/
+    /* DISPLAY: BLOC */
+}
+.header_logo {
+    font-size: 30px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 800;
+}
+.header_logo:hover {
+    text-shadow: 1px 1px 10px rgb(125, 123, 125);
+    cursor: pointer;
+    transition: 0.8s;
+}
+.span-FIT { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #f50ef5;
+}
+.header_logo a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #7d06b1;
+}
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке самих ПУНКТОВ МЕНЮ---------------------------------- */
+.header__list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.menu_header_link { /* все ссылки отступы */
+    /*padding: 0px 0px 0px 10px;*/
+    list-style: none; /* убираем ТОЧКИ перед ПУНКАМИ МЕНЮ */ /* получилось */
+    margin: 0px 0px 0px 20px; /* получилось */
+    text-transform: uppercase;
+    font-family: 'Noto Serif Balinese', serif;
+    font-size: 20px; /* если сделать шрифт меньше, СКРОЛА не будет */
+
+    /* ---------------------------------------------------ДЕЛАЕМ интересное подчеркивание пунктов меню-------------------------------------- */
+    background: linear-gradient(orange 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s; /* плавный переход-анимация */
+}
+    /* что бы заработало добавляем HOVER --t: */
+    .menu_header_link:hover {
+    --t: 100%;
+}
+
+.menu_header_link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 18px;
+    font-weight: 700;
+    color: #fdfbfb;
+}
+.menu_header_link1:hover {
+    color: #1909f5;
+    transition: 0.7s;
+} 
+.link_vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+    color: #f50ef5;
+}
+.link_vip:hover {
+    color: #eaedf6;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+ /* --------------------------------------------------переходим к верстке БУРГЕР-МЕНЮ--------------------------------- */
+.header__burger {
+    display: none;
+}
+.header__menu {
+}
+
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке Медиа-Запрос для 767px-экранов---------------------------------- */
+
+/* будет выскакивать БУРГЕР-МЕНЮ при уменьшеении ЭКРАНОВ  */
+
+@media (max-width:767px) {
+    .header__body { /* уменьшаем ВЫСОТУ ШАПКИ header  */
+        height: 50px;
+    }
+    .header__logo { /* уменьшаем размер ЛОГО-фото */
+        flex: 0 0 40px;
+    }
+    /* это будет бургер меню */
+    .header__burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 3;
+    } 
+
+    /* --------------------------здесь мы РИСУЕМ ПОЛОСОЧКИ БУРГЕР */ /* общие настройки-------------------------- */
+    .header__burger:before,
+    .header__burger:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    /* --------------------------здесь мы РИСУЕМ Верхнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:before {
+        top: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ Нижнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:after {
+        bottom: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ СРЕДНЮЮ ПОЛОСУ БУРГЕР--------------------------- */
+    .header__burger span {
+        position: absolute;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    .header__burger.active:before {
+        transform: rotate(45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        top: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active:after {
+        transform: rotate(-45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        bottom: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active span {
+        transform: scale(0); /* убираем среднюю полосочку */
+    }
+    /* --------------------------здесь мы Закончили РИСОВАТЬ - БУРГЕ-------------------------- */
+
+
+
+    /* -----------------теперь стилизуем МЕНЮ----------------- */
+    .header__menu {
+        /* Делаем ПЛАСТИНУ которая будет ВЫЕЗЖАТЬ для пунктов меню */
+        position: fixed;
+        top: -100%; /* меню будет сьезжать сверху */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* будет скрол при повороте экрана телефона */
+        transition: all 0.3s ease 0s; /* теперь переходит плавно */    
+        background-color: #8043f0; 
+        padding: 70px 10px 20px 10px; /* пункты меню вытащили из розовой плашки в РЯД */
+    }
+    .header__menu.active {
+        top: 0;
+    }
+
+    .header__list {
+        display: block; /* меню пункты встали в КОЛОНКУ */
+        text-align: center;
+    }
+    .header__list li { /* теперь сделали отступы между строчками меню в колонке */
+        margin: 0px 0px 20px 0px;
+    }
+
+    .header__list li {
+    font-size: 27px; /* сделали шрифт больше (с 20рх на 27рх), для СКРОЛА телефонов в горизонтальном положении!*/
+    }
+
+}
+
+
+
+/* =============================================section_Servises==UP============================================== */
+
+.section_Servises {
+    padding: 100px 0px 30px 0px;
+}
+
+.body-section_Servises {
+    padding: 50px 0px 50px 0px;
+}
+
+.title_Servises {      /* текст Servises */
+    font-size: 30px;
+    font-weight: 900;
+    color: #040404;
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+.slideInLeft {
+}
+
+.subtitle_Servises {   /* оболочка текста */
+    font-size: 20px;
+    color: #d407e2;
+    padding: 20px 0px 0px 0px;
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+.span_home_s_s {/* текст HOME*/
+    color: #d4d3d3;
+}
+.span_home_s_s:hover { /* текст HOME меняем цвет*/
+    color: #15d304;
+    transition: 0.8s;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* текст Pricing*/
+.span_pricing_s_s { /* сейчас АКТИВНАЯ СТРАНИЦА */
+    color: #d407e2;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.span_pricing_s_s:hover { /* сейчас АКТИВНАЯ СТРАНИЦА c hover */
+    color: #15d304;
+    transition: 0.8s;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.span_club_card_s_s {/* текст Club Card*/
+    color: #d4d3d3;
+}
+.span_club_card_s_s:hover { /* текст Club Card меняем цвет*/
+    color: #15d304;
+    transition: 0.8s;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* ==============================cards=========================================== */
+
+.section_Servises-CARDS {
+}
+
+
+.COLUMS_section_Servises {
+    display: flex;
+    margin: 0 -15px;  /* отступы между колонками */
+    flex-wrap: wrap;  
+
+   /* border: 1px solid  #15d304;*/
+}
+@media (max-width:360px) {
+    .COLUMS_section_Servises   {
+        margin: 0 0px;  /* отступы между колонками */
+    }
+}
+.COLUM_section_Servises {
+    flex: 0 1 33.333%;
+    padding: 0 15px; /* отступы между колонками */   
+    
+    /*border: 1px solid  #484948;*/
+}
+@media (max-width:1030px) {
+    .COLUM_section_Servises {
+        flex: 0 1 50%;
+        margin: 0px 0px 20px 0px;
+    }
+}
+@media (max-width:992px) {
+    .COLUM_section_Servises {
+        flex: 0 1 100%;
+        margin: 0px 0px 20px 0px;
+    }
+}
+@media (max-width:360px) {
+    .COLUM_section_Servises   {
+        padding: 0px 0px;  /* отступы между колонками */
+    }
+}
+
+.CARD_section_Servises_content {
+    padding: 30px 0px 0px 0px;
+
+
+}
+.CARD_section_Servises_content > *:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+}
+
+
+.IMG_section_Servises /* foto */ {
+    position: relative;      /* позиционируем фото */
+    padding: 0px 0px 55% 0px;/* позиционируем фото */
+
+}
+
+.IMG_section_Servises img {
+    position: absolute;/* позиционируем фото */
+    width: 100%;      /* позиционируем фото */
+    height: 100%;     /* позиционируем фото */
+    top: 0;           /* позиционируем фото */
+    left: 0;          /* позиционируем фото */
+
+    border-radius: 20px;
+}
+
+.IMG_section_Servises img:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+._ibg5 {
+    position: relative;
+}
+._ibg5 img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+}
+
+
+.TITLE_section_Servises/* TEXT CROSSFIT, FITNESS, AEROBIC */ {
+    text-align: center;
+    color: #f27406;
+    font-size: 30px;
+    font-weight: 900;
+}
+.TITLE_section_Servises:hover {/* TEXT CROSSFIT, FITNESS, AEROBIC */
+    color: #0beefa;
+    text-shadow: 1px 1px 4px #261227;
+    transition: 1s;
+    cursor: pointer;
+}
+@media (max-width:350px) {
+    .TITLE_section_Servises {
+        font-size: 20px;
+    }
+}
+.SUBTITLE_section_Servises {
+    line-height: 25px;
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    font-style: italic;
+
+}
+.SUBTITLE_section_Servises:hover {
+    color: #0b3bfa;
+    text-shadow: 1px 1px 1px #7cfb05;
+    transition: 0.7s;
+    cursor: pointer;
+}
+@media (max-width:350px) {
+    .SUBTITLE_section_Servises  {
+        font-size: 15px;
+    }
+}
+.PRICE_section_Servises {  
+    text-align: left;
+    font-size: 35px;
+    font-weight: 900;
+    color: #cc3af8;
+    text-shadow: 1px 1px 3px #c6bcbc;
+}
+@media (max-width:350px) {
+    .PRICE_section_Servises{
+        font-size: 25px;
+    }
+}
+.PRICE_month {   
+    margin-top: 15px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 900;
+    color: #04049c;
+}
+
+.nav_section_Servises {
+}
+
+.list_section_Servises {
+    font-size: 17px;
+    text-align: left;
+    color: #372020;
+    line-height: 25px;  
+}
+@media (max-width:360px) {
+    .list_section_Servises {
+        font-size: 15px;
+    }
+}
+.link_section_Servises::before {  /* вставили галочки с помощью ::before */
+    content: url(img-2/tick.png); 
+    display: inline-block;    
+    margin-right: 10px;          /* растояние между галочками и пунктами li */
+}
+
+
+.button_2  /* кнопка */{
+    padding: 8px 32px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fdfbfb;
+    background-color: #161515;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+
+}
+.button_2 a{
+    color: inherit;
+}
+.button_2:hover {
+    background-color: #ffffff00;
+    border: 2px solid #101010;
+    color: #000000;
+    transition: 0.6s;
+    cursor: pointer;
+}

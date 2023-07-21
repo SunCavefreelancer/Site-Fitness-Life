@@ -1,0 +1,367 @@
+/*Обнуление*/
+*,*:before,:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    text-decoration: none;
+    letter-spacing: none;
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* ------------------------------------------------------------------- */
+html,
+body {
+    height: 100%; /* прижимаем футер КНИЗУ */
+    font-family: 'Lato', sans-serif; /* не сработал шрифт */
+    line-height: 1;
+    font-size: 16px;
+    color: #000;
+}
+/* ------------------------------------------------------------------- */
+
+/* -------------------------оболочка для демонстрации----------------- */
+.wrapper {
+    min-height: 100%;/* прижимаем футер КНИЗУ */
+    display: flex; /* прижимаем футер КНИЗУ */
+    flex-direction: column; /* прижимаем футер КНИЗУ */
+    overflow: hidden;
+}
+/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+._conteiner { /* общий ограничиваюий контейнер */
+    max-width: 1046px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+._ibg { /* для всех используемых ibg */
+    position: relative;
+}
+._ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+
+/* -------------------------основные стили------------------------ */
+
+.header {
+    position: fixed; /* Наша ШАПКА - HEADER будет ФИКСИРОВАННОЙ, т.е.при скроле она всеглда будет сверху кнотента */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;/* делаем большой z-index ЧТОБЫ поверх контента была шапка*/
+}
+
+/* --------------------создаем ПЛАШКУ РОЗОВОГО ЦВЕТА----------------------*/
+.header:before {/* создаем ПЛАШКУ */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* т.е. на ВЕСЬ РАЗМЕР НАШЕЙ ШАПОЧКИ */
+    background-color: rgb(33, 231, 238);
+    z-index: 2;
+}
+._conteiner { /* теперь ОГРАНИЧИМ по ШИРИНЕ КОНТЕНТ */
+    max-width: 1150px; /* получилось */
+    margin: 0 auto; /* получилось */
+    padding: 0px 20px; /* получилось */
+}
+.header__body { /* теперь нам нужно ВЫТАЩИТЬ ВЕСЬ КОНТЕНТ НАВЕРХ из под ШАПКИ */
+    position: relative;
+    z-index: 2;
+    height: 80px; /* ВЫСОТА ШАПКИ header */
+
+    /* теперь продолжаем работать с ШАПКОЙ, после того как в conteiner - ОГРАНИЧИЛИ по ШИРИНЕ КОНТЕНТ */
+    display: flex; /* ЗаДАЛИ flex что бы РАЗБРОСАТЬ по СТОРОНАМ лого и пункты меню */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    /*flex: 0 0 80px; /* КАРТИНКА сама по размеру 200рх */
+    /*border-radius:60%; /* делаем картинку КРУГЛОЙ */
+    /*overflow: hidden;*/ 
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+
+}
+.header__logo img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+   /*max-width: 100%;*/
+    /*display: block;*/
+    /* DISPLAY: BLOC */
+}
+.header_logo {
+    font-size: 30px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 800;
+}
+.header_logo:hover {
+    text-shadow: 1px 1px 10px rgb(125, 123, 125);
+    cursor: pointer;
+    transition: 0.8s;
+}
+.span-FIT { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #f50ef5;
+}
+.header_logo a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #7d06b1;
+}
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке самих ПУНКТОВ МЕНЮ---------------------------------- */
+.header__list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.menu_header_link { /* все ссылки отступы */
+    /*padding: 0px 0px 0px 10px;*/
+    list-style: none; /* убираем ТОЧКИ перед ПУНКАМИ МЕНЮ */ /* получилось */
+    margin: 0px 0px 0px 20px; /* получилось */
+    text-transform: uppercase;
+    font-family: 'Noto Serif Balinese', serif;
+    font-size: 20px; /* если сделать шрифт меньше, СКРОЛА не будет */
+
+    /* ---------------------------------------------------ДЕЛАЕМ интересное подчеркивание пунктов меню-------------------------------------- */
+    background: linear-gradient(orange 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s; /* плавный переход-анимация */
+}
+    /* что бы заработало добавляем HOVER --t: */
+    .menu_header_link:hover {
+    --t: 100%;
+}
+
+.menu_header_link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 18px;
+    font-weight: 700;
+    color: #fdfbfb;
+}
+.menu_header_link1:hover {
+    color: #1909f5;
+    transition: 0.7s;
+} 
+.link_vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+    color: #f50ef5;
+}
+.link_vip:hover {
+    color: #eaedf6;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+ /* --------------------------------------------------переходим к верстке БУРГЕР-МЕНЮ--------------------------------- */
+.header__burger {
+    display: none;
+}
+.header__menu {
+}
+
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке Медиа-Запрос для 767px-экранов---------------------------------- */
+
+/* будет выскакивать БУРГЕР-МЕНЮ при уменьшеении ЭКРАНОВ  */
+
+@media (max-width:767px) {
+    .header__body { /* уменьшаем ВЫСОТУ ШАПКИ header  */
+        height: 50px;
+    }
+    .header__logo { /* уменьшаем размер ЛОГО-фото */
+        flex: 0 0 40px;
+    }
+    /* это будет бургер меню */
+    .header__burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 3;
+    } 
+
+    /* --------------------------здесь мы РИСУЕМ ПОЛОСОЧКИ БУРГЕР */ /* общие настройки-------------------------- */
+    .header__burger:before,
+    .header__burger:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    /* --------------------------здесь мы РИСУЕМ Верхнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:before {
+        top: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ Нижнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:after {
+        bottom: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ СРЕДНЮЮ ПОЛОСУ БУРГЕР--------------------------- */
+    .header__burger span {
+        position: absolute;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    .header__burger.active:before {
+        transform: rotate(45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        top: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active:after {
+        transform: rotate(-45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        bottom: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active span {
+        transform: scale(0); /* убираем среднюю полосочку */
+    }
+    /* --------------------------здесь мы Закончили РИСОВАТЬ - БУРГЕ-------------------------- */
+
+
+
+    /* -----------------теперь стилизуем МЕНЮ----------------- */
+    .header__menu {
+        /* Делаем ПЛАСТИНУ которая будет ВЫЕЗЖАТЬ для пунктов меню */
+        position: fixed;
+        top: -100%; /* меню будет сьезжать сверху */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* будет скрол при повороте экрана телефона */
+        transition: all 0.3s ease 0s; /* теперь переходит плавно */    
+        background-color: #8043f0; 
+        padding: 70px 10px 20px 10px; /* пункты меню вытащили из розовой плашки в РЯД */
+    }
+    .header__menu.active {
+        top: 0;
+    }
+
+    .header__list {
+        display: block; /* меню пункты встали в КОЛОНКУ */
+        text-align: center;
+    }
+    .header__list li { /* теперь сделали отступы между строчками меню в колонке */
+        margin: 0px 0px 20px 0px;
+    }
+
+    .header__list li {
+    font-size: 27px; /* сделали шрифт больше (с 20рх на 27рх), для СКРОЛА телефонов в горизонтальном положении!*/
+    }
+
+}
+
+/* -----------------теперь стилизуем МЕНЮ----------------- *
+
+
+
+/* --------------------------------------------------------------------------- */
+.section_block__foto {
+    padding: 80px 0px 80px 0px;
+
+}
+
+.block__foto {
+padding: 100px 0px 0px 0px;
+}
+
+/* Ограничивающая оболочка */
+.slick-list { /* что бы не выглядывал край соседней фотографии СБОКУ */
+    overflow: hidden;
+}
+/* --------------------------------------------------------------------------- */
+
+/* Лента слайдов */ /* что бы все фото выстроились в РЯД */
+.slick-track{
+    display: flex; /* 1). уже работает СЛАЙДЕР, можно листать картинки */
+}
+/* --------------------------------------------------------------------------- */
+/* Стилизуем кнопки - точки */
+/* Точки (булиты) */
+.slider .slick-dots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider .slick-dots li{ /* растояние между кнопками-булитами */
+    list-style: none;
+    margin: 0px 10px;
+}
+.slider .slick-dots button{
+    font-size: 0;
+    width: 15px; /* размер кнопки */
+    height: 15px; /* размер кнопки */
+    background-color: rgb(21, 0, 255);
+    border-radius: 50%; /* круглые кнопки */
+}
+.slider .slick-dots li.slick-active button { /* делаем активную кнопку прозрачной */
+    background-color: transparent;
+    border: 2px solid #0111bc;
+}
+/* --------------------------------------------------------------------------- */
+/* Здесь мы стилизуем для -КОНКРЕТНОГО СЛАДЙА- кнопки */
+.slider {
+    position: relative;
+    padding: 0px 60px; /* сделали отступы картинок от стрелок */
+}
+/* Стрелка */  
+.slider .slick-arrow{
+    position: absolute;
+    top: 50%;
+    margin: -40px 20px 0px 20px; /* выравниваем стрелку по центру картинки и страницы */
+    z-index: 10;
+    font-size: 0; /* убираем надписи на кнопках (теперь кнопки исчезли) */
+    width: 30px;
+    height: 60px;
+    border: none;
+}
+/* Стрелка ВЛЕВО*/ 
+.slider .slick-arrow.slick-prev{ /* здесь мы обращаемся к конктреной стрелке ВЛЕВО */
+    left: 0;
+    background: url(img-2/стрелка\ влево.png) 0 0 / 100% no-repeat; /* а здесь добавляем фото стрелочки ВЛЕВО */
+    color: #c521f2;
+} 
+/* Стрелка ВПРАВО*/ 
+.slider .slick-arrow.slick-next{ /* здесь мы обращаемся к конктреной стрелке ВПРАВО */
+    right: 0;
+    background: url(img-2/стрелка\ вправо.png)  0 0 / 100% no-repeat; /* а здесь добавляем фото стрелочки ВПРАВО  */
+} 
+/* --------------------------------------------------------------------------- */
+
+.slider__item img {
+    border: 1px double #020bb1; /* сделали рамочку фотографиям */
+    max-width: 100%; /* адапитив фото при уменьшении */
+}
+/* --------------------------------------------------------------------------- */
+.slider__item {
+    text-align: center;/* поставили ПО ЦЕНТРУ картинки */
+}
+/* --------------------------------------------------------------------------- */

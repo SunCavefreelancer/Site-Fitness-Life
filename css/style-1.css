@@ -1,0 +1,1641 @@
+/*Обнуление*/
+*,*:before,:after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    text-decoration: none;
+    letter-spacing: none;
+    list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+/* ------------------------------------------------------------------- */
+html,
+body {
+    height: 100%; /* прижимаем футер КНИЗУ */
+
+    line-height: 1;
+    font-size: 16px;
+    color: #000;
+}
+/* ------------------------------------------------------------------- */
+
+/* -------------------------оболочка для демонстрации----------------- */
+.wrapper {
+    min-height: 100%;/* прижимаем футер КНИЗУ */
+    display: flex; /* прижимаем футер КНИЗУ */
+    flex-direction: column; /* прижимаем футер КНИЗУ */
+    overflow: hidden;
+}
+/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+._conteiner { /* общий ограничиваюий контейнер */
+    max-width: 1046px;
+    margin: 0 auto;
+    padding: 0px 20px;
+}
+._ibg { /* для всех используемых ibg */
+    position: relative;
+}
+._ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}/* -------------------------ТЕНИЧЕСКИЕ КЛАССЫ----------------- */
+
+/* -------------------------основные стили------------------------ */
+
+.header {
+    position: fixed; /* Наша ШАПКА - HEADER будет ФИКСИРОВАННОЙ, т.е.при скроле она всеглда будет сверху кнотента */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 50;/* делаем большой z-index ЧТОБЫ поверх контента была шапка*/
+}
+
+/* --------------------создаем ПЛАШКУ РОЗОВОГО ЦВЕТА----------------------*/
+.header:before {/* создаем ПЛАШКУ */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* т.е. на ВЕСЬ РАЗМЕР НАШЕЙ ШАПОЧКИ */
+    background-color: rgb(33, 231, 238);
+    z-index: 2;
+}
+._conteiner { /* теперь ОГРАНИЧИМ по ШИРИНЕ КОНТЕНТ */
+    max-width: 1150px; /* получилось */
+    margin: 0 auto; /* получилось */
+    padding: 0px 20px; /* получилось */
+}
+.header__body { /* теперь нам нужно ВЫТАЩИТЬ ВЕСЬ КОНТЕНТ НАВЕРХ из под ШАПКИ */
+    position: relative;
+    z-index: 2;
+    height: 80px; /* ВЫСОТА ШАПКИ header */
+
+    /* теперь продолжаем работать с ШАПКОЙ, после того как в conteiner - ОГРАНИЧИЛИ по ШИРИНЕ КОНТЕНТ */
+    display: flex; /* ЗаДАЛИ flex что бы РАЗБРОСАТЬ по СТОРОНАМ лого и пункты меню */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo { /* а размер ДЛЯ НАШЕЙ КАРТИНКИ мы укажем 60рх */
+    /*flex: 0 0 80px; /* КАРТИНКА сама по размеру 200рх */
+    /*border-radius:60%; /* делаем картинку КРУГЛОЙ */
+    /*overflow: hidden;*/ 
+    /* если у КАРТИНКИ есть ПОДРЕЗАНИЕ - пишем в header__logo img - DISPLAY: BLOCK */
+
+}
+.header__logo img { /* если вдруг ДРУГАЯ КАРТИНКА будет БОЛЬШЕ, то чтобы потом подстроилась под НАШ РАЗМЕР */
+   /*max-width: 100%;*/
+    /*display: block;*/
+    /* DISPLAY: BLOC */
+}
+.header_logo {
+    font-size: 30px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 800;
+}
+.header_logo:hover {
+    text-shadow: 1px 1px 10px rgb(125, 123, 125);
+    cursor: pointer;
+    transition: 0.8s;
+}
+.span-FIT { /*  задаем ЦВЕТ ИМЕННО  span */
+    color: #f50ef5;
+}
+.header_logo a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #7d06b1;
+}
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке самих ПУНКТОВ МЕНЮ---------------------------------- */
+.header__list {
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+
+.menu_header_link { /* все ссылки отступы */
+    /*padding: 0px 0px 0px 10px;*/
+    list-style: none; /* убираем ТОЧКИ перед ПУНКАМИ МЕНЮ */ /* получилось */
+    margin: 0px 0px 0px 20px; /* получилось */
+    text-transform: uppercase;
+    font-family: 'Noto Serif Balinese', serif;
+    font-size: 20px; /* если сделать шрифт меньше, СКРОЛА не будет */
+
+    /* ---------------------------------------------------ДЕЛАЕМ интересное подчеркивание пунктов меню-------------------------------------- */
+    background: linear-gradient(orange 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s; /* плавный переход-анимация */
+}
+    /* что бы заработало добавляем HOVER --t: */
+    .menu_header_link:hover {
+    --t: 100%;
+}
+
+.menu_header_link1 {  /* задаем всем ссылкам размер, шрифт, цвет */
+    font-size: 18px;
+    font-weight: 700;
+    color: #fdfbfb;
+}
+.menu_header_link1:hover {
+    color: #1909f5;
+    transition: 0.7s;
+} 
+.link_vip { /* -------------------выделяем отдельно ссылку в меню -----------------  */
+    color: #f50ef5;
+}
+.link_vip:hover {
+    color: #eaedf6;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+
+ /* --------------------------------------------------переходим к верстке БУРГЕР-МЕНЮ--------------------------------- */
+.header__burger {
+    display: none;
+}
+.header__menu {
+}
+
+
+
+/* --------------------------------------------------ПЕРЕХОДИМ К верстке Медиа-Запрос для 767px-экранов---------------------------------- */
+
+/* будет выскакивать БУРГЕР-МЕНЮ при уменьшеении ЭКРАНОВ  */
+
+@media (max-width:767px) {
+    .header__body { /* уменьшаем ВЫСОТУ ШАПКИ header  */
+        height: 50px;
+    }
+    .header__logo { /* уменьшаем размер ЛОГО-фото */
+        flex: 0 0 40px;
+    }
+    /* это будет бургер меню */
+    .header__burger {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 3;
+    } 
+
+    /* --------------------------здесь мы РИСУЕМ ПОЛОСОЧКИ БУРГЕР */ /* общие настройки-------------------------- */
+    .header__burger:before,
+    .header__burger:after {
+        content: "";
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    /* --------------------------здесь мы РИСУЕМ Верхнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:before {
+        top: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ Нижнюю ПОЛОСУ БУРГЕР-------------------------- */
+    .header__burger:after {
+        bottom: 0;  
+    }
+     /* --------------------------здесь мы РИСУЕМ СРЕДНЮЮ ПОЛОСУ БУРГЕР--------------------------- */
+    .header__burger span {
+        position: absolute;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        top: 9px;
+        transition: all 0.3s ease 0s; /* теперь переходят плавно полосочки */
+    }
+
+    .header__burger.active:before {
+        transform: rotate(45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        top: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active:after {
+        transform: rotate(-45deg); /* делаем палочку теперь на 45`,т.е.она стала по диагонале */
+        bottom: 9px; /* теперь подняли ее на центр */
+    }
+    .header__burger.active span {
+        transform: scale(0); /* убираем среднюю полосочку */
+    }
+    /* --------------------------здесь мы Закончили РИСОВАТЬ - БУРГЕ-------------------------- */
+
+
+
+    /* -----------------теперь стилизуем МЕНЮ----------------- */
+    .header__menu {
+        /* Делаем ПЛАСТИНУ которая будет ВЫЕЗЖАТЬ для пунктов меню */
+        position: fixed;
+        top: -100%; /* меню будет сьезжать сверху */
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* будет скрол при повороте экрана телефона */
+        transition: all 0.3s ease 0s; /* теперь переходит плавно */    
+        background-color: #8043f0; 
+        padding: 70px 10px 20px 10px; /* пункты меню вытащили из розовой плашки в РЯД */
+    }
+    .header__menu.active {
+        top: 0;
+    }
+
+    .header__list {
+        display: block; /* меню пункты встали в КОЛОНКУ */
+        text-align: center;
+    }
+    .header__list li { /* теперь сделали отступы между строчками меню в колонке */
+        margin: 0px 0px 20px 0px;
+    }
+
+    .header__list li {
+    font-size: 27px; /* сделали шрифт больше (с 20рх на 27рх), для СКРОЛА телефонов в горизонтальном положении!*/
+    }
+
+}
+
+/* -----------------теперь стилизуем МЕНЮ----------------- *
+
+
+/* ================================================================================= */
+.section_UP {
+    position: relative; /* фото на весь блок */
+
+    background: linear-gradient(45deg, rgba(69, 3, 126, 0.7), rgba(243, 3, 207, 0.9)),
+    url(img-2/fon\ 1.jpg) center center repeat-x;
+    background-size: cover;
+}
+._ibg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+} /* --- ---- ---- ---- ---- ---- ---- --- */
+
+
+
+.conteiner_UP {
+}
+._conteiner {
+}
+
+.body-UP {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.TEXT> *:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+}
+.TEXT {
+    flex: 0 1 50%;
+}
+.UP_BLOCK /* главный блок */ {
+    padding: 80px 0px 0px 0px;
+    position: relative; /*  фото в блоке (спорт пара) */
+    z-index: 3;
+}
+
+.body-UP-TEXT /* текст GYM */ {
+
+    font-size: 55px;
+    font-weight: 900;
+    color: #ffe9e9;
+    line-height: 138%;
+    text-transform: uppercase;
+    font-family: 'Anton', sans-serif;
+    text-shadow: 1px 1px 2px #101010;
+}
+.span-in_downtown  /* span */ /* текст GYM */{
+    font-weight: 500;
+    color: #dccdcd;
+    text-transform: none;
+}
+.body-UP-SUBTEXT /* маленький текст */{
+    font-size: 15px;
+    line-height: 25px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #f5e8e8;
+}
+.body-UP-button /* кнопка */{
+    padding: 8px 24px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fdfbfb;
+    background-color: #161515;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.body-UP-button a {
+    color: inherit;
+}
+.body-UP-button:hover {
+    background-color: #ffffff00;
+    border: 2px solid #101010;
+    color: #000000;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.body-UP-img img{
+    /*max-width: 100%;*/
+}
+@media (max-width:992px) {
+    .body-UP-img img {
+        padding: 0px 20px 0px 0px;    
+    }
+}
+@media (max-width:825px) {
+    .body-UP-img img {
+        padding: 0px 20px 0px 0px;    
+    }
+}
+
+/* =============================section_EXERCISE-IN-THE-GYM================================ */
+.section_EXERCISE-IN-THE-GYM {
+}
+.conteiner_EXERCISE-IN-THE-GYM {
+}
+._conteiner {
+}
+.block-BODY_EXERCISE-IN-THE-GYM {
+    padding: 80px 0px 80px 0px;
+}
+
+.BLOCK-TEXT {
+
+}
+.block-TEXT_EXERCISE {
+    text-align: center;
+    font-size: 45px;
+    text-align: center;
+    font-weight: 900;
+    font-family:'Times New Roman', Times, serif;
+}
+.span-IN-THE{
+    font-weight: 500;
+}
+.block-SUBTEXT {
+    font-size: 16px;
+    text-align: center;
+    color: #575555;
+    line-height: 150%;
+    padding: 30px 0px 30px 0px;
+}
+.block-SUBTEXT_EXERCISE {
+}
+.block-ICONS {
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (max-width:767px) {
+    .block-ICONS {
+        justify-content: center;    
+        align-items: center;
+    }
+}
+.block-ICON {
+    flex: 0 1 16.666%;
+    text-align: center;
+}
+@media (max-width:767px) {
+    .block-ICON {
+        flex: 0 1 33.333%; 
+        padding: 0px 0px 40px 0px;   
+    }
+}
+@media (max-width:450px) {
+    .block-ICON {
+        flex: 0 1 50%; 
+        padding: 0px 0px 40px 0px;   
+    }
+}
+.icon-img {
+   padding: 0px 0px 20px 0px;
+}
+.icon-img img{
+    background-color: #f5f2f2;
+    border-radius: 40%;
+    padding: 20px;
+    height: 120px;
+    width: 120px;
+
+}
+.icon-img img:hover {
+    background-color: #fdfbdc;
+    transition: 1.5s;
+    transform: rotate(360deg);
+    cursor: pointer;
+}
+.value-Yoga {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 17px;
+    color: #575555;
+    font-weight: 700;
+}
+.value-Yoga:hover {
+    color: #ba19ff;
+    transition: 0.8s;
+    cursor: pointer;
+
+}
+
+/* ----- */
+.BLOCK-s-foto {
+    display: flex;
+    align-items: center;
+}
+.BLOCK-s-foto_FOTO {
+    padding: 120px 0px 0px 0px;
+}
+@media (max-width:767px) {
+    .BLOCK-s-foto {
+        flex-direction: column-reverse;  
+    }
+}
+
+.BLOCK-s-foto-TEXT {
+
+}
+.block-s-foto-TEXT_THE {
+    text-align: left;
+    font-size: 45px;
+    font-weight: 500;
+    font-family:'Times New Roman', Times, serif;
+    line-height: 142%;
+}
+@media (max-width:992px) {
+    .block-s-foto-TEXT_THE {
+        font-size: 35px;   
+    }
+}
+@media (max-width:767px) {
+    .block-s-foto-TEXT_THE {
+        font-size: 30px; 
+        padding: 30px 0px 0px 0px;
+        text-align: center;
+    }
+}
+@media (max-width:650px) {
+    .block-s-foto-TEXT_THE {
+        font-size: 25px; 
+        text-align: center;  
+        padding: 30px 0px 0px 0px;
+    }
+}
+.span-PERSONAL-TRAINER {
+    font-weight: 900;
+}
+.span-SAFE-WORKOUT {
+    font-weight: 900;
+}
+.block-SUBTEXT {
+}
+.block-s-foto-SUBTEXT_Want-to-be {
+    font-size: 16px;
+    text-align: left;
+    color: #575555;
+    padding: 30px 0px 30px 0px;
+    line-height: 150%;
+}
+@media (max-width:767px) {
+    .block-s-foto-SUBTEXT_Want-to-be  {
+        padding: 0px 0px 0px 0px;  
+
+    }
+}
+@media (max-width:650px) {
+    .block-s-foto-SUBTEXT_Want-to-be  {
+        padding: 0px 0px 0px 0px;  
+        text-align:justify;
+    }
+}
+.spisok {
+    line-height: 150%;
+}
+@media (max-width:767px) {
+    .spisok {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.spisok_icon {
+    padding-right: 20px;
+}
+.button_2  /* кнопка */{
+    margin-top: 20px;
+    padding: 8px 24px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fdfbfb;
+    background-color: #161515;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+@media (max-width:767px) {
+    .button_2  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: block;
+    }
+}
+.button_2 a{
+    color: inherit;
+}
+.button_2:hover {
+    background-color: #ffffff00;
+    border: 2px solid #101010;
+    color: #000000;
+    transition: 0.6s;
+    cursor: pointer;
+}
+/* ----- */
+/* =============================section_EXERCISE-IN-THE-GYM================================ */
+
+
+
+
+/* =============================section_section_15%_OFF================================ */
+.section_15_OFF {
+    position: relative; /* фото на весь блок */
+
+    background: linear-gradient(45deg, rgba(250, 0, 247, 0.9), rgba(250, 212, 0, 0.7)),
+    url(img-2/Fon.jpg) center right no-repeat;
+
+    padding: 100px 0px 120px 0px;
+    margin-top: -83px;
+}
+@media (max-width:450px) {
+    .section_15_OFF  {
+        padding: 100px 0px 70px 0px;
+    }
+}
+.conteiner_section_15_OFF {
+}
+._conteiner {
+}
+
+
+.block-BODY_section_15_OFF {
+}
+.section_15_OFF-BLOCK {
+}
+
+
+.BLOCK-TEXT-section_15_OFF {
+    text-align: left;
+    max-width: 700px;
+}
+
+.block-TEXT_2nd {
+    font-weight: 600;
+
+}
+.block-TEXT_15_OFF {
+    text-align: left;
+    font-family:'Times New Roman', Times, serif;
+    line-height: 142%;
+    color: #f6eeee;
+    font-size: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 30px 0px 0px 0px;
+}
+@media (max-width:767px) {
+    .block-TEXT_15_OFF  {
+        font-size: 30px;
+    }
+}
+.span-for {
+    font-weight: 500;
+    color: #eac7c7;
+}
+.block-SUBTEXT {
+}
+.block-SUBTEXT_We-are-happy {
+    font-size: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #605f5f;
+    line-height: 25px;
+    text-align: justify ;
+}
+/* =============================section_section_15%_OFF================================ */
+
+
+/* =============================section_ANNA SMITH================================ */
+.section_ANNA-SMITH {
+}
+.conteiner_section_ANNA-SMITH {
+}
+._conteiner {
+}
+
+
+.section_ANNA-SMITH_body {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+@media (max-width:955px) {
+    .section_ANNA-SMITH_body {
+    flex-direction: column-reverse;
+    }
+}
+.BODY_ANNA-SMITH {
+    padding: 80px 0px 80px 0px;
+}
+
+.section_ANNA-SMITH_img {
+    flex: 0 1 40%;
+    display: flex;
+    align-items: center;
+}
+@media (max-width:400px) {
+    .section_ANNA-SMITH_img img {
+        flex: 0 1 100%;
+        max-width: 100%;
+    }
+}
+.section_ANNA-SMITH_img img {
+    background: linear-gradient(to right, #ffff00 0%, #ff66ff 100%); /* --------нарисовали фон под фото----------------- */
+    border-radius: 20% 75% 20% 40%;
+    padding: 30px;
+}
+@media (max-width:955px) {
+    .section_ANNA-SMITH_img {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       padding: 20px 0px 0px 0px;
+    }
+}
+.BLOCK-TEXT-section_ANNA-SMITH {
+    flex: 0 1 60%;
+}
+
+
+.block-TEXT_COACHING-STAFF {
+    font-size: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #2e2d2d;
+    font-weight: 700;
+}
+
+.block-TEXT_ANNA-SMITH {
+    color: #f6d4d4;
+    font-size: 45px;
+    margin-top: 30px;
+    font-weight: 600;
+    text-shadow: 1px 0 0 #f3ecec;
+}
+@media (max-width:400px) {
+    .block-TEXT_ANNA-SMITH {
+      font-size: 35px;
+    }
+}
+.block-SUBTEXT {
+}
+.block-SUBTEXT_Finess-Coach {
+    color: #f06cf3;
+    font-size: 25px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.block-SUBTEXT_Anna-is-an {
+    font-size: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #605f5f;
+    line-height: 25px;
+    text-align: justify ;
+}
+@media (max-width:410px) {
+    .block-SUBTEXT_Anna-is-an {
+      font-size: 13px;
+      padding: 0px 20px 0px 0px;
+    }
+}
+.section_ANNA-SMITH_icon img {
+    padding: 0px 30px 0px 0px;
+}
+.section_ANNA-SMITH_icon img:hover {
+    cursor: pointer;
+    transition: 0.8s;
+    opacity: 0.5;
+}
+
+/* =============================section_ANNA SMITH================================ */
+
+
+
+/* ================================section_25%_OFF=================================== */
+.section_25_OFF {
+    position: relative; /* фото на весь блок */
+
+    background: linear-gradient(45deg, rgba(181, 14, 253, 0.7), rgba(253, 56, 197, 0.7)),
+    url(img-2/foto5.jpg) center right no-repeat;
+
+    padding: 100px 0px 120px 0px;
+}
+@media (max-width:450px) {
+    .section_25_OFF {
+        padding: 100px 0px 70px 0px;
+    }
+}
+.conteiner_section_25_OFF {
+}
+._conteiner {
+}
+
+
+.block-BODY_section_25_OFF {
+}
+.section_25_OFF-BLOCK {
+}
+
+
+.BLOCK-TEXT-section_25_OFF {
+    text-align: right;
+}
+.block-TEXT_2nd2 {
+    font-weight: 600;
+}
+.block-TEXT_25_OFF {
+    font-family:'Times New Roman', Times, serif;
+    line-height: 142%;
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 30px 0px 0px 0px;
+
+}
+@media (max-width:767px) {
+    .block-TEXT_25_OFF  {
+        font-size: 30px;
+    }
+}
+.span-for2 {
+    font-weight: 500;
+    color: #bebaba;
+}
+.block-SUBTEXT {
+}
+.block-SUBTEXT_We-are-happy2 {
+    font-size: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    color: #e8d8d8;
+    line-height: 25px;
+    text-align: right ;
+}
+/* ========================================section_25%_OFF========================= */
+
+
+/* ====================================OUR-CLASSES============================== */
+.section_OUR-CLASSES {
+    padding: 80px 0px 150px 0px;
+}
+.conteiner_section_OUR-CLASSES {
+}
+._conteiner {
+}
+
+
+.BLOCK-TEXT-section_OUR-CLASSES {
+}
+.block-TEXT_OUR-CLASSES {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+}
+.span_OUR {
+    font-weight: 500;
+    color: #454343;
+}
+
+
+.CARDS_OUR-CLASSES /* text */{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    padding: 50px 0px 0px 0px;
+    /*border: 1px solid #8043f0;*/
+}
+@media (max-width:1100px) {
+    .CARDS_OUR-CLASSES  {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+}
+@media (max-width:900px) {
+    .CARDS_OUR-CLASSES  {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+.column-OUR-CLASSES {
+}
+@media (max-width:1100px) {
+    .column-OUR-CLASSES {
+       padding: 0px 20px 70px 20px;
+
+    }
+}
+
+
+.CARD_OUR-CLASSES-1 /* карточка 1 */{
+    height: 470px;
+    width: 300px;
+    background: linear-gradient(to bottom right, #ffff00 0%, #ff66ff 100%);    /* --------нарисовали фон под фото----------------- */
+    border-radius: 20px;
+   /* border: 1px solid #8043f0;*/
+
+    position: relative;  /* позиционируем img в карточке */
+}
+.CARD_OUR-CLASSES-2 /* карточка 1 */{
+    height: 470px;
+    width: 300px;
+    background: linear-gradient(to top right, #ffff00 0%, #ff66ff 100%);  
+    border-radius: 20px;
+   /* border: 1px solid #8043f0;*/
+
+    position: relative;  /* позиционируем img в карточке */
+}
+.CARD_OUR-CLASSES-3 /* карточка 1 */{
+    height: 470px;
+    width: 300px;
+    background: linear-gradient(to bottom left, #ffff00 0%, #ff66ff 100%);    /* --------нарисовали фон под фото----------------- */
+    border-radius: 20px;
+   /* border: 1px solid #8043f0;*/
+
+    position: relative;  /* позиционируем img в карточке */
+}
+@media (max-width:992px) {
+    .CARD_OUR-CLASSES {
+
+    }
+}
+.block-TEXT-Fitness_01 {
+    position: relative;/* позиционируем текст по центру */
+    z-index: 2;   
+    max-width: 300px; /* по ширине карточки */
+}
+.block-TEXT_TEXT-Fitness {
+    position: absolute; /* позиционируем текст по центру */
+    width: 100%;    /* позиционируем текст по центру */ 
+    height: 100%;   /* позиционируем текст по центру */
+    top: 250px;     /* позиционируем текст по центру */
+    left: 75px;     /* позиционируем текст по центру */
+    
+    text-transform: uppercase;
+    font-size: 30px;
+    color: #f6f2f2;
+    font-family: 'Rajdhani', sans-serif;
+    text-shadow: 2px 1px 10px #000000;
+    font-weight: 800;
+
+
+}
+.block-TEXT_TEXT-Fitness:hover {
+    font-size: 35px;
+    cursor: pointer; /* делаем курсор "пальчик" */
+    transition: 0.7s;
+}
+.OUR-CLASSES_img_01{
+    position: absolute;  /* позиционируем img в карточке */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.OUR-CLASSES_img_01 img {
+    max-width: 100%;
+}
+.block-SUBTEXT_Fitness-is {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    color: #252424;
+    line-height: 25px;    
+    text-align: center;
+    margin: 25px 0;
+
+}
+
+
+.button_01  /* кнопка */{
+    padding: 8px 24px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fdfbfb;
+    background-color: #161515;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    max-width: 300px; /* ставим кнопку по центру и зажаем ей ширину по карточке */
+    margin: 0 80px;  /* ставим кнопку по центру и зажаем ей ширину по карточке */
+}
+.button_01 a{
+    color: inherit;
+}
+.button_01:hover {
+    background-color: #ffffff00;
+    border: 2px solid #101010;
+    color: #000000;
+    transition: 0.6s;
+    cursor: pointer;
+}
+/* ====================================OUR-CLASSES============================== */
+
+
+/*-- -----------------------------------section 7-------------------------------------------------------------- --*/
+
+/* --------------------------------------------------------------------------- */
+.block__foto {
+    padding-top: 50px;
+    margin-bottom: 70px;
+}
+
+/* Ограничивающая оболочка */
+.slick-list { /* что бы не выглядывал край соседней фотографии СБОКУ */
+    overflow: hidden;
+}
+/* --------------------------------------------------------------------------- */
+
+/* Лента слайдов */ /* что бы все фото выстроились в РЯД */
+.slick-track{
+    display: flex; /* 1). уже работает СЛАЙДЕР, можно листать картинки */
+}
+/* --------------------------------------------------------------------------- */
+/* Стилизуем кнопки - точки */
+/* Точки (булиты) */
+.slider .slick-dots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider .slick-dots li{ /* растояние между кнопками-булитами */
+    list-style: none;
+    margin: 0px 10px;
+}
+.slider .slick-dots button{
+    font-size: 0;
+    width: 15px; /* размер кнопки */
+    height: 15px; /* размер кнопки */
+    background-color: rgb(21, 0, 255);
+    border-radius: 50%; /* круглые кнопки */
+}
+.slider .slick-dots li.slick-active button { /* делаем активную кнопку прозрачной */
+    background-color: transparent;
+    border: 2px solid #0111bc;
+}
+/* --------------------------------------------------------------------------- */
+/* Здесь мы стилизуем для -КОНКРЕТНОГО СЛАДЙА- кнопки */
+.slider {
+    position: relative;
+    padding: 0px 60px; /* сделали отступы картинок от стрелок */
+}
+/* Стрелка */  
+.slider .slick-arrow{
+    position: absolute;
+    top: 50%;
+    margin: -40px 20px 0px 20px; /* выравниваем стрелку по центру картинки и страницы */
+    z-index: 10;
+    font-size: 0; /* убираем надписи на кнопках (теперь кнопки исчезли) */
+    width: 30px;
+    height: 60px;
+    border: none;
+}
+/* Стрелка ВЛЕВО*/ 
+.slider .slick-arrow.slick-prev{ /* здесь мы обращаемся к конктреной стрелке ВЛЕВО */
+    left: 0;
+    background: url(img-2/стрелка\ влево.png) 0 0 / 100% no-repeat; /* а здесь добавляем фото стрелочки ВЛЕВО */
+    color: #c521f2;
+} 
+/* Стрелка ВПРАВО*/ 
+.slider .slick-arrow.slick-next{ /* здесь мы обращаемся к конктреной стрелке ВПРАВО */
+    right: 0;
+    background: url(img-2/стрелка\ вправо.png)  0 0 / 100% no-repeat; /* а здесь добавляем фото стрелочки ВПРАВО  */
+} 
+/* --------------------------------------------------------------------------- */
+
+.slider__item img {
+    border: 1px double #020bb1; /* сделали рамочку фотографиям */
+    max-width: 100%; /* адапитив фото при уменьшении */
+}
+/* --------------------------------------------------------------------------- */
+.slider__item {
+    text-align: center;/* поставили ПО ЦЕНТРУ картинки */
+}
+/* --------------------------------------------------------------------------- */
+
+/*-- -----------------------------------section 7-------------------------------------------------------------- --*/
+
+
+.section_WHAT-PEOPLЕ-SAY {    
+    position: relative;    /* ОБЛОЧКА foto на всю секицю */
+}
+.conteiner_WHAT-PEOPLЕ-SAY {
+}
+._conteiner {
+}
+
+
+.BODY_WHAT-PEOPLЕ-SAY /* блок */ {
+    padding: 80px 0px 120px 0px;
+    
+}
+.BODY_WHAT-PEOPLЕ-SAY >*:not(:last-child) {
+    padding: 0px 0px 30px 0px;
+}
+.block_WHAT-PEOPLЕ-SAY_TEXT /* текст */{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 50px;
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    color: #db3ff3;
+    font-family: 'Times New Roman', Times, serif;
+}
+.span_PEOPLE {
+    font-weight: 900;
+    color: #efebeb;
+    text-shadow: 1px 1px 10px #000000;
+    font-family: 'Times New Roman', Times, serif;
+}
+.block_WHAT-PEOPLЕ-SAY_IMG /* фото по центру */{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.block_WHAT-PEOPLЕ-SAY_IMG img  /* фото по центру */ {
+    background: linear-gradient(to bottom left, #ffff00 0%, #ee1eee 100%);    /* --------нарисовали фон под фото----------------- */
+    border-radius: 70%;
+    max-width: 100%;
+}
+.block_WHAT-PEOPLЕ-SAYSUBTEXT /* длинный текст */{
+    text-align: center;
+    line-height: 170%;
+    font-size: 20px;
+    color: #efebeb;
+    text-shadow: 1px 1px 10px #000000;   
+    font-family: 'Times New Roman', Times, serif;
+}
+.block_WHAT-PEOPLЕ-TITLEdown /* цитата*/{
+    text-align: center;
+    color: #db3ff3;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 10px #000000;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.block_WHAT-PEOPLЕ /* ОБЛОЧКА foto на всю секицю */ {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* вытащили весь текст на верх */
+}
+.block_WHAT-PEOPLЕ img {
+    opacity: 0.8;
+}
+._ibg /* foto на всю секицю */  {
+}
+
+
+
+/* ============================================================================== */
+.section_block_shop {
+}
+.conteiner_section_block_shop {
+}
+._conteiner {
+}
+
+
+.block_shop {
+    padding: 80px 0px 80px 0px;
+}
+
+.block_shop_TEXT {
+    text-align: center;
+    font-size: 40px;
+    color: #000;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+@media (max-width:1150px) {
+    .block_shop_CARDS {
+       margin: 0px 0px 50px 0px;
+
+    }
+}
+.span_SPORTS {
+    font-weight: 900;
+}
+.block_shop_CARDS {
+    display: flex;
+    margin: 70px 0px 0px 0px;
+    /*border: 1px solid #f489e4;*/
+
+    flex-wrap: wrap;
+}
+
+
+.block_shop_CARD {
+    flex: 0 1 25%;
+   /* border: 1px solid #1909f5;*/
+
+    display: flex;        /* прижиимаем ЗВЕЗДЫ ку низу карточки */
+    flex-direction: column; /* прижиимаем ЗВЕЗДЫ ку низу карточки */
+}
+.block_shop_CARD >*:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+}
+@media (max-width:1150px) {
+    .block_shop_CARD  {
+        flex: 0 1 50%;
+    }
+}
+@media (max-width:767px) {
+    .block_shop_CARD  {
+        flex: 0 1 100%;
+        padding: 0px 0px 20px 0px;
+    }
+}
+.block_shop_IMG {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    display: flex;   /* прижиимаем ЗВЕЗДЫ ку низу карточки */
+    flex: 1 1 auto;    /* прижиимаем ЗВЕЗДЫ ку низу карточки */
+}
+.block_shop_IMG:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.block_shop_TITLE {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+.block_shop_TITLE:hover {
+    text-shadow: 1px 0 0 #38332c;
+    cursor: pointer;
+    transition: 0.8s;
+    color: #fa8e8e;
+}
+.block_shop_PRICE {
+    font-size: 25px;
+    font-weight: 800;
+    color: #eb14d2;
+    text-align: center;
+    cursor: pointer;
+    
+    /* --------------------------------------------------------- ДЕЛАЕМ интересное подчеркивание пунктов меню------------------------------------- */
+    background: linear-gradient(rgb(255, 0, 255) 0 0) bottom/var(--t,0) 2px no-repeat;
+    transition: 0.5s;   /* ---------------------------------------------плавный переход-анимация------------------- */
+}
+.block_shop_PRICE:hover {                                                
+    --t: 100%; /* ----------------------------------------------------что бы заработало добавляем HOVER---------------------------------- --t */
+}
+.span_55 {
+    color: #000;
+    text-decoration: line-through;  /* -----------------сделали зачеркнутый текст------------------------- */
+}
+/* ЗВЕЗДЫ */
+.stars {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.stars img:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+/* ==================================================================== */
+
+.section_WORLD-OF-GYM {
+
+}
+.conteiner_section_WORLD-OF-GYM {
+}
+._conteiner {
+}
+
+
+.BODY_WORLD-OF-GYM {
+    padding: 80px 0px 80px 0px;
+}
+
+.block_WORLD-OF-GYM_TEXT {
+    text-align: center;
+    font-size: 40px;
+    color: #000;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.span_WORLD {
+    font-weight: 500;
+}
+
+
+.COLUMNS_WORLD-OF-GYM_ {
+    display: flex;
+    flex-wrap: wrap;
+    
+    margin: 0px -10px;
+    /*border: 1px solid #1909f5;   */
+}
+
+.COLUMN_WORLD-OF-GYM {
+    flex: 0 1 33.333%; /* работает!!! */
+
+    padding: 0px 10px;
+    /*border: 1px solid #09f540;*/
+    margin-top: 50px;
+}
+
+.COLUMN_WORLD-OF-GYM >*:not(:last-child) {
+    padding: 0px 0px 20px 0px;
+}
+@media (max-width:992px) {
+    .COLUMN_WORLD-OF-GYM {
+        flex: 0 1 100%; /* работает!!! */
+    }    
+}
+@media (max-width:767px) {
+    .COLUMN_WORLD-OF-GYM {
+        flex: 0 1 100%; /* работает!!! */
+    }   
+}
+/* ----- */
+._ibg2 {
+    position: relative; /* позиционируем картинку в КАРТОЧКЕ */
+}
+._ibg2 img {
+    position: absolute; /* позиционируем картинку в КАРТОЧКЕ */
+    width: 100%;     /*  позиционируем картинку в КАРТОЧКЕ */
+    height: 100%;   /* позиционируем картинку в КАРТОЧКЕ */
+    top: 0;        /* позиционируем картинку в КАРТОЧКЕ */
+    left: 0;       /* позиционируем картинку в КАРТОЧКЕ */
+    object-fit: cover; /* позиционируем картинку в КАРТОЧКЕ */
+}
+.IMG_WORLD-OF-GYM { 
+    display: block;             /* позиционируем картинку в КАРТОЧКЕ */
+    padding: 0px 0px 69% 0px;   /* позиционируем картинку в КАРТОЧКЕ */
+} 
+.IMG_WORLD-OF-GYM:hover {
+    cursor: pointer;
+    filter: hue-rotate(120deg);
+    transition: 0.8s;
+}
+/* ----- */
+.CARD_GYM {
+    /*background-color: #dfd7d7;*/
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+.TITLE_TEXT {    
+    flex: 1 1 auto; 
+}
+.TITLE_TEXT >*:not(:last-child) {
+    padding: 20px 0px 0px 0px;
+}
+.TITLE_WORLD-OF-GYM {
+    color: #1c1b1b;
+    font-size: 15px;
+
+}
+.TITLE_WORLD-OF-GYM:hover {
+    color: #dedada;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.TEXT_WORLD-OF-GYM {
+    color: #0f0e0e;
+    font-size: 25px;
+    font-weight: 900;   
+}
+.TEXT_WORLD-OF-GYM :hover {
+    color: #f9f4f4;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.SUBTEXT_WORLD-OF-GYM {
+    color: #141313;
+    font-size: 15px;
+    line-height: 142%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+
+}
+
+.button_2 {
+}
+
+
+/* -----------------------------------------footer-------------------------------------------- */
+.footer {
+    padding: 80px 0px 80px 0px;
+    /* фото на весь блок */
+    background: linear-gradient(45deg, rgba(79, 84, 97, 0.6), rgba(17, 18, 22, 0.9)),
+                url(img-2/foto3.jpg) center center no-repeat;
+    background-size: cover;
+}
+.conteiner_footer {
+}
+._conteiner {
+}
+
+
+.footer_BODY {
+    padding: 0px 0px 40px 0px;
+}
+
+.block_footer_TEXT {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    color: #e9d8d8;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.span_CONTACT {
+    color: #f9f9f9;
+    text-shadow: 2px 0 0 #000000;
+    font-weight: 900;
+}
+
+
+.footer_COLUMS {
+    display: flex;
+    margin: 0 auto;
+    /*border: 1px solid #020bb1;*/
+    flex-wrap: wrap;
+}
+
+
+.footer_Column1 {
+    flex: 0 1 10%;
+    /*border: 1px solid #02b11f;*/
+    display: flex;
+    justify-content: center;
+}
+@media (max-width:767px) {
+    .footer_Column1 {
+        flex: 0 1 100%;
+    }
+}
+@media (max-width:767px) {
+    .footer_block-icons {
+        display: flex;
+        flex-direction: row;
+    }
+}
+.footer_block-icons img{
+    display: flex;
+    padding: 0px 0px 30px 0px;
+    border: 2px solid#9102b1;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 15px 0;
+}
+.footer_block-icons img:hover {
+    cursor: pointer;
+    transition: 0.8s;
+    transform: rotate(-180deg);
+    border: 2px solid #ecf7ee;
+}
+@media (max-width:767px) {
+    .footer_block-icons img{
+      margin-left: 25px;
+    }
+}
+@media (max-width:500px) {
+    .footer_block-icons img{
+      margin-left: 10px;
+    }
+}
+.footer_Column2 {
+    flex: 0 1 45%;
+   /* border: 1px solid #b102ab;*/
+    display: flex;
+    justify-content: center;
+    line-height: 50px;
+}
+@media (max-width:767px) {
+    .footer_Column2{
+        flex: 0 1 50%;
+
+    }
+}
+@media (max-width:650px) {
+    .footer_Column2{
+        flex: 0 1 100%;
+        text-align: center;
+    }
+}
+.footer_Column3 {
+    flex: 0 1 45%;
+    /*border: 1px solid #ef0810;*/
+    display: flex;
+    justify-content: center;
+    line-height: 50px;
+}
+@media (max-width:767px) {
+    .footer_Column3{
+        flex: 0 1 50%;
+        text-align: center;
+
+    }
+}
+@media (max-width:650px) {
+    .footer_Column3{
+        flex: 0 1 100%;
+
+    }
+}
+.footer-_TITLE {
+
+}
+
+.footer_adress-TEXT {
+    font-size: 21px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+.footer_adress-TEXT:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 1.5s;
+}
+.adress-TEXT {
+    font-size: 18px;
+    color: #c3c6c6;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+.footer_Phones-TEXT {
+    font-size: 21px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+.footer_Phones-TEXT:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 1.5s;
+}
+.Phones-TEXT {
+    font-size: 18px;
+    color: #c3c6c6;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.footer_Working-time-TEXT {
+    font-size: 21px;
+    color: #ffffff;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+}
+.footer_Working-time-TEXT:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 1.5s;
+}
+.Working-time-TEXT {
+    font-size: 18px;
+    color: #c3c6c6;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.Our-mail-TEXT {
+    font-size: 18px;
+    color: #c3c6c6;
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* -------------------------------------------footer-------------------------------------------- */
+
+
+/* -----------------------------------------secction_img------------------------------------------------ */
+
+.secction_img-boX {
+    margin: -80px 0px 80px 0px;
+
+
+}
+.conteiner_section_WORLD-OF-GYM {
+}
+._conteiner {
+}
+
+._ibg3 {/* позиционируем фото */
+    position: relative;
+}
+._ibg3 img{/* позиционируем фото */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain;
+}
+.BOX-secction_img {
+    position: relative; /* позиционируем фото */
+    padding: 0px 0px 50% 0px;/* позиционируем фото */
+}
+.secction_img-foto {
+    position: absolute;/* позиционируем фото */
+    width: 100%;/* позиционируем фото */
+    height: 100%;/* позиционируем фото */
+    top: 0;/* позиционируем фото */
+    left: 0;/* позиционируем фото */
+}
+.secction_img_TiTLE {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 0px 0px 0px;
+
+    font-size: 30px;
+    font-family: 'Abyssinica SIL', serif;
+    font-weight: 800;
+}
+.span-FIT {
+    color: #f50ef5;
+}
+.secction_img_TiTLE :hover {
+    text-shadow: 1px 1px 10px rgb(125, 123, 125);
+    cursor: pointer;
+    transition: 0.8s;
+}
+.secction_img_TiTLE a { /* задаем ЦВЕТ ИМЕННО ЛОГО */
+    color: #7d06b1;
+}
+/* -----------------------------------------secction_img------------------------------------------------ */
